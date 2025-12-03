@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poke+ | Pokédex</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">Poke+</div>
+    <nav>
+      <a href="login.html">Sair</a>
+    </nav>
+  </header>
+
+  <section class="pokedex-container">
+    <h1>Pokédex</h1>
+    <p>Explore os Pokémons e descubra suas características!</p>
+
+    <div class="search-box">
+      <input type="text" id="buscaPokemon" placeholder="Buscar Pokémon pelo nome...">
+    </div>
+
+    <div id="listaPokemons" class="pokemon-grid">
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Poke+. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Modal para exibir detalhes do Pokémon -->
+  <div id="pokemonModal" class="modal">
+    <div class="modal-content">
+      <span id="modalClose" class="close">&times;</span>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
