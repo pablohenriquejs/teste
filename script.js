@@ -88,4 +88,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Buscar detalhes de cada Pokémon
         const promessas = resultados.map(nome =>
-          fetch(`https://pokeapi.co/api/v2/pokemon
+          fetch(`https://pokeapi.co/api/v2/pokemon/${nome}`)
+            .then(r => (r.ok ? r.json() : null))
+            .catch(() => null)
+        );
+
+        const pokemons = await Promise.all(promessas);
+
+        listaPokemons.innerHTML = "";
+        pokemons
+          .filter(Boolean)
+          .forEach(pokemon => listaPokemons.appendChild(criarCartao(pokemon)));
+
+      } catch (err) {
+        console.error("Erro na busca:", err);
+        listaPokemons.innerHTML = "<p>Erro ao buscar Pokémons.</p>";
+      }
+
+    }, DEBOUNCE_MS);
+  });
+
+  // Controle de modal
+  const modal = document.getElementById("pokemonModal");
+  const btnFechar = document.getElementById("modalClose");
+
+  btnFechar.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", (evento) => {
+    if (evento.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+});
+
+
